@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+import "normalize.css"
 import "./assets/css/index.less"
 /* 
   craco设置别名 因找文件（../）比较麻烦
