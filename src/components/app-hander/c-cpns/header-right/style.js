@@ -39,7 +39,10 @@ export const RightWrapper = styled.div`
     border: 1px solid #ccc;
     border-radius: 25px;
     background-color: #fff;
-    color: #999;
+    color: rgb(113,113,113);
     cursor: pointer;
+
+    ${props => props.theme.mixin.boxShadow};
+    
   }
 `
