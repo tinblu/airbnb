@@ -1,8 +1,10 @@
 import React, { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
-import AppFooter from './components/app-footer'
-import AppHeader from './components/app-hander'
+import "antd/dist/antd"
+
 import routes from './router'
+import AppHeader from './components/app-hander'
+import AppFooter from './components/app-footer'
 
 
 const App = memo(() => {

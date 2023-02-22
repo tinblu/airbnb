@@ -29,4 +29,6 @@ class HYRequest {
   }
 }
 
-export default new HYRequest(BASE_URL, TIMEOUT)
+const hyrequest = new HYRequest(BASE_URL, TIMEOUT)
+
+export default hyrequest
