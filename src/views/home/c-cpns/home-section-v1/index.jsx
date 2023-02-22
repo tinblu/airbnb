@@ -6,12 +6,12 @@ import { SectionV1Wrapper } from './style'
 
 const HomeSectionV1 = memo((props) => {
 
-  const { infoData } = props
+  const { infoData, itemWidth } = props
 
   return (
-    <SectionV1Wrapper>
+    <SectionV1Wrapper itemWidth={itemWidth}>
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
-      <SectionRooms roomList={infoData.list}/>
+      <SectionRooms roomList={infoData.list} itemWidth={itemWidth}/>
     </SectionV1Wrapper>
   )
 })
