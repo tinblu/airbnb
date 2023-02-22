@@ -4,8 +4,6 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import HomeBanner from './c-cpns/home-banner'
 import { HomeWrapper } from './style'
-import SectionHeader from '@/components/section-header'
-import SectionRooms from '@/components/section-rooms'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 
 
