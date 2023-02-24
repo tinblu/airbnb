@@ -7,6 +7,7 @@ import { HomeWrapper } from './style'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import SectionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
+import SectionTabs from '@/components/section-tabs'
 
 
 
@@ -18,6 +19,8 @@ const Home = memo(() => {
     discountInfo: state.home.discountInfo,
   }), shallowEqual)
 
+  //从对象中需取出字符串----数据的转换
+  const tabNames =  discountInfo.dest_address?.map(item => item.name)
 
 
   // 派发异步的事件：发送网络请求
@@ -33,6 +36,7 @@ const Home = memo(() => {
         {/* 折扣数据 */}
         <div className="discount">
           <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle}/>
+          <SectionTabs tabNames={tabNames}/>
           <SectionRooms roomList={discountInfo.dest_list?.["成都"]} itemWidth="33.333%"/>
         </div>
         <HomeSectionV1 infoData={goodPriceInfo} itemWidth="25%"/>
