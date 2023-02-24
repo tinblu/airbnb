@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TabsWrapper = styled.div`
-
+  
   .item {
     box-sizing: border-box;
     flex-basis: 120px;//最小宽度
