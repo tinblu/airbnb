@@ -1,9 +1,12 @@
+import IconArrowLeft from '@/assets/svg/icon-arrow-left'
+import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import PropTypes from 'prop-types'
 import React, { memo, useEffect, useRef, useState } from 'react'
 import { ViewWrapper } from './style'
 
 const ScrollView = memo((props) => {
   /* 定义内部的状态 */
+  const [ showLeft, setShowLeft ] = useState(false)
   const [ showRight, setShowRight ] = useState(false)
   const [ posIndex, setPosIndex ] = useState(0)
   const totalDistanceRef = useRef()
@@ -19,8 +22,9 @@ const ScrollView = memo((props) => {
   }, [props.children])
 
   /* 组件事件处理 */
-  function rightClickHandle() {
-    const newIndex = posIndex + 1
+
+  function controlClickHandle(isRight) {
+    const newIndex = isRight ? posIndex + 1 : posIndex - 1
     const newEl = scrollContentRef.current.children[newIndex]
     const newOffsetLeft = newEl.offsetLeft
     scrollContentRef.current.style.transform = `translate(-${newOffsetLeft}px)`
@@ -28,15 +32,26 @@ const ScrollView = memo((props) => {
 
     /* 是否继续显示右侧的按钮 */
     setShowRight(totalDistanceRef.current > newOffsetLeft)
+    setShowLeft(newOffsetLeft > 0)
   }
 
   return (
     <ViewWrapper>
-      <button>左边按钮</button>
-      { showRight && <button onClick={rightClickHandle}>右边按钮</button>}
+      { showLeft && (
+        <div className='control left' onClick={e => controlClickHandle(false)}>
+          <IconArrowLeft/>
+        </div>
+      ) }
+      { showRight && (
+        <div className='control right' onClick={e  => controlClickHandle(true)}>
+          <IconArrowRight/>
+        </div>
+      ) }
 
-      <div className="scroll-content" ref={scrollContentRef}>
-        {props.children}
+      <div className="scroll">
+        <div className="scroll-content" ref={scrollContentRef}>
+          {props.children}
+        </div>
       </div>
     </ViewWrapper>
   )
