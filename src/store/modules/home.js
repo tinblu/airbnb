@@ -1,4 +1,4 @@
-import { getHomeDiscountData, getHomeGoodPriceData, getHomeHighScoreData, getHomeHotRecommendData } from '@/services'
+import { getHomeDiscountData, getHomeGoodPriceData, getHomeHighScoreData, getHomeHotRecommendData, getHomeLongforData } from '@/services'
 import { createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 //发送网络请求
@@ -15,6 +15,9 @@ export const fetchHomeDataAction = createAsyncThunk("fetchdata", (payload, {disp
   getHomeHotRecommendData().then(res => {
     dispatch(changeRecommendInfoAction(res))
   })
+  getHomeLongforData().then(res => {
+    dispatch(changeLongforInfoAction(res))
+  })
 })
 
 const homeSlice = createSlice({
@@ -23,7 +26,8 @@ const homeSlice = createSlice({
     goodPriceInfo: {},
     highScoreInfo: {},
     discountInfo: {},
-    recommendInfo: {}
+    recommendInfo: {},
+    longforInfo: {},
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
@@ -37,6 +41,9 @@ const homeSlice = createSlice({
     },
     changeRecommendInfoAction(state, { payload }) {
       state.recommendInfo = payload
+    },
+    changeLongforInfoAction(state, { payload }) {
+      state.longforInfo = payload
     }
   },
   extraReducers: {
@@ -50,7 +57,8 @@ export const {
   changeGoodPriceInfoAction,
   changeHighScoreInfoAction,
   changeDiscountInfoAction,
-  changeRecommendInfoAction 
+  changeRecommendInfoAction,
+  changeLongforInfoAction, 
 } = homeSlice.actions
 
 export default homeSlice.reducer
