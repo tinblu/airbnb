@@ -1,3 +1,4 @@
+import ScrollView from '@/base-ui/scroll-view'
 import LongforItem from '@/components/longfor-item'
 import SectionHeader from '@/components/section-header'
 import PropTypes from 'prop-types'
@@ -10,11 +11,13 @@ const HomeLongfor = memo((props) => {
     <LongforWrapper>
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
       <div className="longfor-list">
-        {
-          infoData.list.map(item => {
-            return <LongforItem itemData={item} key={item.city}/>
-          })
-        }
+        <ScrollView>
+          {
+            infoData.list.map(item => {
+              return <LongforItem itemData={item} key={item.city}/>
+            })
+          }
+        </ScrollView>
       </div>
     </LongforWrapper>
   )

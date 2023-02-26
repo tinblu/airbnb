@@ -19,7 +19,8 @@ const ScrollView = memo((props) => {
     const totalDistance = scrollWidth - clientWidth
     totalDistanceRef.current = totalDistance
     setShowRight(totalDistance > 0)
-  }, [props.children])
+    
+  }, [])
 
   /* 组件事件处理 */
 
@@ -31,20 +32,21 @@ const ScrollView = memo((props) => {
     setPosIndex(newIndex)
 
     /* 是否继续显示右侧的按钮 */
-    setShowRight(totalDistanceRef.current > newOffsetLeft)
-    setShowLeft(newOffsetLeft > 0)
+      setShowRight(totalDistanceRef.current > newOffsetLeft)
+      setShowLeft(newOffsetLeft > 0)
   }
 
   return (
     <ViewWrapper>
-      { showLeft && (
+      {showLeft && (
         <div className='control left' onClick={e => controlClickHandle(false)}>
-          <IconArrowLeft/>
+          <IconArrowLeft/> 
         </div>
       ) }
+      
       { showRight && (
         <div className='control right' onClick={e  => controlClickHandle(true)}>
-          <IconArrowRight/>
+          {showRight && <IconArrowRight/>}
         </div>
       ) }
 
