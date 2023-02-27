@@ -11,7 +11,7 @@ const EntireRooms = memo(() => {
   }))
   return (
     <RoomsWrapper>
-      <h2 className='title'>{totalCount}多处住所</h2>
+      {!!roomList.length && <h2 className='title'>{totalCount}多处住所</h2>}
       <div className="list">
         {
           roomList.map(item => {
