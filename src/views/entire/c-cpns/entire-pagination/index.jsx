@@ -1,7 +1,7 @@
 import { fetchRoomListAction } from '@/store/modules/entire/actionCreators'
 import { Pagination } from '@mui/material'
 import React, { memo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { PaginationWrapper } from './style'
 
 const EntirePagination = memo(() => {
@@ -9,7 +9,7 @@ const EntirePagination = memo(() => {
     totalCount: state.entire.totalCount,
     currentPage: state.entire.currentPage,
     roomList: state.entire.roomList
-  }))
+  }), shallowEqual)
 
   const startCount = currentPage * 20 + 1
   const endCount = startCount + 20
@@ -18,6 +18,8 @@ const EntirePagination = memo(() => {
   //事件处理
   const dispatch = useDispatch()
   function pageChangeHandle(event, pageCount) {
+    //回到顶部
+    window.scrollTo(0,0)
     //更新最新的页码：redux => currentPage
     // dispatch(changeCurrentPageAction(pageCount - 1))
     dispatch(fetchRoomListAction(pageCount - 1))
