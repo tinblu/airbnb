@@ -1,25 +1,33 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 
 import { DemoWrapper } from './style'
-import indicator from '@/base-ui/indicator'
+import Indicator from '@/base-ui/indicator'
 
 const Demo = memo(() => {
   const names = ["aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg", "hhh"]
+  const [ selectIndex, setSelectIndex ] = useState(0)
+
+  function toggleClickHandle(isNext = true) {
+    let newIndex = isNext ? selectIndex + 1 : selectIndex - 1
+    if (newIndex < 0) newIndex = names.length - 1
+    if (newIndex > names.length - 1) newIndex = 0
+    setSelectIndex(newIndex)
+  }
   return (
     <DemoWrapper>
       <div className="control">
-        <button>上一个</button>
-        <button>下一个</button>
+        <button onClick={e => toggleClickHandle(false)}>上一个</button>
+        <button onClick={e => toggleClickHandle(true)}>下一个</button>
       </div>
 
       <div className="list">
-        <indicator>
+        <Indicator selectIndex={selectIndex}>
           {
             names.map(item => {
-              return <button>{item}</button>
+              return <button key={item}>{item}</button>
             })
           }
-        </indicator>
+        </Indicator>
       </div>
     </DemoWrapper>
   )
