@@ -1,12 +1,16 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
+import DetailInfo from './c-cpns/detail-info'
+import DetailPictures from './c-cpns/detail-pictures'
+import { DetailWrapper } from './style'
 
 const Detail = memo(() => {
-  const { detailInfo } = useSelector((state) => ({
-    detailInfo: state.detail.detailInfo
-  }))
+  
   return (  
-    <div>{detailInfo.name}</div>
+    <DetailWrapper>
+      <DetailPictures/>
+      <DetailInfo/>
+    </DetailWrapper>
   )
 })
 
