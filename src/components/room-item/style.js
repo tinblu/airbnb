@@ -70,6 +70,16 @@ export const ItemWrapper = styled.div `
               height: 8px;
               background-color: red;
             }
+            &.active1 {
+              width: 5px;
+              height: 5px;
+              background-color: pink;
+            }
+            &.active2 {
+              width: 3px;
+              height: 3px;
+              background-color: blue;
+            }
           }
         }
       }

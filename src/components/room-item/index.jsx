@@ -9,7 +9,7 @@ import Indicator from '@/base-ui/indicator'
 import classNames from 'classnames'
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth="25%" } = props
+  const { itemData, itemWidth="25%", itemClick } = props
   const [selectIndex, setSelectIndex ] = useState(0)
   const  sliderRef  = useRef()
 
@@ -25,6 +25,10 @@ const RoomItem = memo((props) => {
     if(newIndex < 0) newIndex = length -1
     if(newIndex > length - 1) newIndex = 0
     setSelectIndex(newIndex)
+  }
+
+  function itemClickHandle() {
+    if(itemClick) itemClick(itemData)
   }
 
   const pictureEl = (
@@ -49,7 +53,11 @@ const RoomItem = memo((props) => {
             itemData?.picture_urls?.map((item, index) => {
               return (
                 <div className='item' key={item}>
-                  <span className={classNames("dot", { active: selectIndex === index})}></span>
+                  <span className={classNames("dot", 
+                  { active: selectIndex === index} 
+                  )}>
+            
+                  </span>
                 </div>
               )
             })
@@ -73,7 +81,11 @@ const RoomItem = memo((props) => {
 
 
   return (
-      <ItemWrapper verifyColor={itemData?.verify_info?.text_color || "#39576a"} itemWidth={itemWidth}>
+      <ItemWrapper 
+        verifyColor={itemData?.verify_info?.text_color || "#39576a"} 
+        itemWidth={itemWidth}
+        onClick={itemClickHandle}
+      >
         <div className="inner">
           { itemData.picture_urls ? sliderEl : pictureEl}
           <div className="desc">
