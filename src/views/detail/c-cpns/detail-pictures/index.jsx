@@ -6,7 +6,7 @@ import { PicturesWrapper } from './style'
 
 const DetailPictures = memo((props) => {
   //定义组件内部的状态
-  const [showBrowser, setShowBrowser] = useState(false)
+  const [showBrowser, setShowBrowser] = useState(true)
   const { detailInfo } = useSelector((state) => ({
     detailInfo: state.detail.detailInfo
   }), shallowEqual)

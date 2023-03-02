@@ -70,7 +70,7 @@ export const BrowserWrapper = styled.div`
 
       /* 动画样式 */
       .pic-enter {
-        transform: translateX(${props => props.isNext? '100%' : '-100%'});
+        transform: translateX(${props => props.isNext? "100%" : "-100%"});
         opacity: 0;
       }
       .pic-enter-active {
