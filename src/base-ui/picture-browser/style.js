@@ -70,7 +70,7 @@ export const BrowserWrapper = styled.div`
 
       /* 动画样式 */
       .pic-enter {
-        transform: translateX(${props => props.isNext? "100%" : "-100%"});
+        transform: translateX(${props => props.isNext? '100%' : '-100%'});
         opacity: 0;
       }
       .pic-enter-active {
@@ -100,6 +100,7 @@ export const BrowserWrapper = styled.div`
       width: 300px;
       min-width: 105vh;
       color: #fff;
+      height: 100%;
 
       .desc {
         display: flex;
@@ -109,6 +110,10 @@ export const BrowserWrapper = styled.div`
           cursor: pointer;
         }
       }
+      
+        .click {
+          transform: translateY(height);
+        }
 
       .list {
         position: absolute;
@@ -118,16 +123,18 @@ export const BrowserWrapper = styled.div`
         bottom: 0;
         margin-top: 3px;
         overflow: hidden;
-        transition: height 300ms ease;
         height: ${props => props.showList ? '67px' : '0'};
-
+        transition: transform 300ms ease;
+      
         .item {
           margin-right: 15px;
           cursor: pointer;
 
+
           img {
             height: 67px;
             opacity: 0.5;
+          
           }
 
           &.active {
@@ -137,6 +144,8 @@ export const BrowserWrapper = styled.div`
           }
         }
       }
+
+    
     }
   }
 `
