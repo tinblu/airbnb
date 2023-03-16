@@ -9,6 +9,7 @@ import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
 import { isEmptyObject } from '@/utils'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import { changeHeaderConfigAction } from '@/store/modules/main'
 
 
 
@@ -28,10 +29,12 @@ const Home = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchHomeDataAction())
+    dispatch(changeHeaderConfigAction({isFixed : true}))
   }, [dispatch])
 
   return (
     <HomeWrapper>
+      
       <HomeBanner/>
       <div className="content">
         {/* 折扣数据 */}
